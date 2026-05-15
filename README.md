@@ -1,4 +1,4 @@
-# Draftblock
+# deepslot
 
 A local-first scheduling feedback loop for academic research work.
 
