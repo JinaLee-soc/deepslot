@@ -1,8 +1,8 @@
-# Research Time Policy Loop
+# Deepblock
 
 A local-first scheduling feedback loop for academic research work.
 
-The system proposes research blocks from free/busy calendar data, evaluates whether those blocks were adopted and followed by manuscript-relevant work traces, and uses the results to update the next scheduling policy.
+Deepblock proposes research blocks from free/busy calendar data, evaluates whether those blocks were adopted and followed by manuscript-relevant work traces, and uses the results to update the next scheduling policy. It does not try to fill empty calendar slots. It learns which kinds of free time reliably become research progress.
 
 ## Why this exists
 
