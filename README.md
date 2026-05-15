@@ -341,7 +341,3 @@ Use an LLM only to summarize aggregate evaluation data into bounded scoring advi
 The system optimizes for **manuscript-capable time**, not empty time.
 
 The main question is not "when is the calendar free?" but **"which kinds of free time reliably become research progress?"**
-
-## License
-
-MIT
