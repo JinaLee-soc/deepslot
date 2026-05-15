@@ -1,0 +1,84 @@
+# Research Time Policy Loop — Example Configuration
+#
+# Copy this file to config/config.yaml and fill in your local calendar taxonomy.
+# config.yaml is gitignored and will not be committed.
+
+# Calendar settings
+calendar:
+  # Work window: days and hours during which proposals are allowed
+  work_days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday"]
+  work_hours:
+    start: "09:00"
+    end: "19:00"
+
+  # Name of the secondary calendar for proposed blocks
+  proposal_calendar: "AI Proposed Work Blocks"
+
+  # Calendars to exclude from free/busy analysis entirely
+  ignored_calendars: []
+
+# Proposal settings
+proposals:
+  # Maximum proposed research hours per week
+  weekly_cap_hours: 12
+
+  # Lookback window for time audit features (days)
+  lookback_days: 21
+
+  # Lookahead window for proposals (days)
+  lookahead_days: 7
+
+  # Minimum block duration (minutes)
+  min_block_minutes: 60
+
+  # Maximum block duration (minutes)
+  max_block_minutes: 180
+
+# Scoring weights (Phase 1 defaults)
+scoring:
+  base_score: 1.0
+  anchor_match_bonus: 0.3
+  prior_conversion_bonus: 0.25
+  project_urgency_bonus: 0.2
+  sufficient_duration_bonus: 0.15
+  post_meeting_penalty: -0.3
+  fragmentation_penalty: -0.2
+  recent_rejection_penalty: -0.15
+  overbooking_penalty: -0.25
+
+# Project list
+# Each project should have a name and optional urgency weight.
+#
+# Status values (scheduling-eligible):
+#   active_this_week  — eligible for proposal assignment this cycle
+#   active_later      — active project, but do not schedule this week
+#
+# Status values (excluded from scheduling):
+#   blocked           — waiting on data, collaborator, review, or other dependency
+#   submitted         — manuscript submitted; no scheduling needed
+#   under_review      — under peer review; no scheduling needed
+#   accepted          — accepted; no scheduling needed
+#   published         — published; no scheduling needed
+#
+# Only active_this_week projects receive proposal assignments.
+projects:
+  - name: "Project A"
+    status: "active_this_week"
+    urgency: 1.0
+  - name: "Project B"
+    status: "active_later"
+    urgency: 0.8
+  # - name: "Project C"
+  #   status: "blocked"
+  #   urgency: 0.0
+  # - name: "Project D"
+  #   status: "submitted"
+  #   urgency: 0.0
+
+# LLM policy (optional, Phase 5)
+# When enabled, an LLM receives only aggregate features and candidate windows.
+# It returns bounded scoring advice; it does not write calendar events.
+llm_policy:
+  enabled: false
+  provider: "anthropic"
+  model: "claude-haiku-4-5-20251001"
